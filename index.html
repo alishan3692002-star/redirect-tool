@@ -1,30 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Redirect Code Generator</title>
-  <style>
-    body { font-family: Arial; padding: 20px; max-width: 600px; margin: auto; }
-    input, button, textarea { width: 100%; margin-top: 10px; padding: 10px; }
-    textarea { height: 200px; }
-  </style>
-</head>
-<body>
-  <h2>🔁 Redirect Code Generator</h2>
-  <label>Paste your Adsterra link:</label>
-  <input type="text" id="link" placeholder="https://example.adsterra.com/your-link">
-  <button onclick="generate()">Generate Redirect Code</button>
-  <label>Generated HTML Code:</label>
-  <textarea id="output" readonly></textarea>
+<script>
+  function generate() {
+    var link = document.getElementById("link").value.trim();
+    if (!link.startsWith("http")) {
+      alert("Please enter a valid URL starting with http or https");
+      return;
+    }
 
-  <script>
-    function generate() {
-      var link = document.getElementById("link").value.trim();
-      if (!link.startsWith("http")) {
-        alert("Please enter a valid URL starting with http or https");
-        return;
-      }
-
-      var code = `<html>
+    var code = `<html>
 <head>
   <script type="text/javascript">
     window.location.href = "${link}";
@@ -35,8 +17,6 @@
 </body>
 </html>`;
 
-      document.getElementById("output").value = code;
-    }
-  </script>
-</body>
-</html>
+    document.getElementById("output").value = code;
+  }
+</script>
